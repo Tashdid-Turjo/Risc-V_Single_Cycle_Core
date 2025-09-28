@@ -3,7 +3,7 @@ module main_decoder(
     input  logic [6:0] op,
     output logic PCSrc, RegWrite, ALUSrc, MemWrite, ResultSrc,
     output logic [1:0] ImmSrc, ALUOp
-)
+);
 
     wire Branch;
 
