@@ -1,3 +1,5 @@
+// not connected with the other module in '1.0.alu.v' file //
+
 module alu(A, B, ALUControl, Result);
     // input declare
     input [31:0] A, B;

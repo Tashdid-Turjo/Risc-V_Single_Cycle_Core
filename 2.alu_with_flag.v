@@ -52,7 +52,7 @@ module alu(A, B, ALUControl, Result, V, C, N, Z);
     assign N = Result[31];
 
     // Carry flag
-    assign C = cout & (~ALUControl[1]);
+    assign C = cout & (~ALUControl[1]);  
 
     // Overflow flag
     assign V = (~ALUControl[1]) & 
