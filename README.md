@@ -1,6 +1,8 @@
 # Risc-V_Single_Cycle_Core
 
+## License and Credits
+This project is based on work by MERL-DSU, licensed under the Apache License 2.0.  
+Original Copyright (c) 2023 MERL-DSU.  
+Modifications Copyright (c) 2025 Tashdid-Turjo.  
 
-This repository is based on (https://github.com/merldsu/RISCV_Single_Cycle_Core/tree/main).
-The original work was created by MuhammadShameelAnsari1999.
-I am only using it for personal practice/learning.
+See the [LICENSE](LICENSE) file for details.
