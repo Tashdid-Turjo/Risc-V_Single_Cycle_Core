@@ -1,3 +1,5 @@
+// In this lecture, we will study different different components of Processor.
+
 module Instr_Mem(
     input logic [31:0] A,
     input logic rst,
