@@ -3,10 +3,7 @@
 module Instr_Mem(
     input logic [31:0] A,
     input logic rst,
-
     output logic [31:0] RD,
-
-    
 );
 
     // creation of memory
