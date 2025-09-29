@@ -9,6 +9,4 @@ reg [31:0] Mem [1023:0];  // when multiple  registers are there then -> 'Mem [10
 
 assign RD = (rst == 1'b0) ? 32'h00000000 : Mem[A[31:2]];
 
-
-
 endmodule
