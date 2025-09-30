@@ -1,3 +1,5 @@
+// Lec3&4 -> assembly to machine code basic Idea. No coding there.
+
 module main_decoder(
     input  logic zero,
     input  logic [6:0] op,

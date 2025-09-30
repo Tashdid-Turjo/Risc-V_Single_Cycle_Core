@@ -1,4 +1,4 @@
-// In this lecture, we will study different different components of Processor.
+// 7.0 to 7.3 is used the same code from Lec6 Folder.
 
 module Instr_Mem(A, rst, RD);
 
