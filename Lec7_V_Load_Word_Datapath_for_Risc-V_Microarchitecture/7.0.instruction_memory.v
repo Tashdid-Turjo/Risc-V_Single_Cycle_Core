@@ -1,5 +1,5 @@
 // 7.0 to 7.3 is used the same code from Lec6 Folder.
-
+// Step1
 module Instr_Mem(A, rst, RD);
 
 input [31:0] A;

@@ -1,9 +1,11 @@
+// Step4
+
 module alu_decoder(ALUOp, op5, funct3, funct7, ALUControl);
     input  [1:0] ALUOp;
     input  [7:0] op5;
     input  [2:0] funct3;
-    input  funct7;
-    output  ALUControl;
+    input        funct7;
+    output [2:0] ALUControl;
 
     // interim wire
     wire [1:0] concatenation;

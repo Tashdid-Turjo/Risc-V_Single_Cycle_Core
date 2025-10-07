@@ -1,8 +1,10 @@
+// Step4
+
 module main_decoder(zero, op, PCSrc, RegWrite, ALUSrc, MemWrite, ResultSrc, ImmSrc, ALUOp);
     input   zero;
     input   [6:0] op;
     output  PCSrc, RegWrite, ALUSrc, MemWrite, ResultSrc;
-    output  [1:0] ImmSrc, ALUOp;
+    output  wire [1:0] ImmSrc, ALUOp;
 
     wire Branch;
 

@@ -1,5 +1,7 @@
 // Top-level control unit for connecting main_decoder and alu_decoder.
 // Here, in Step 4, this module is used bcz, ALUControl was the final output in Lec5. Thus, this ALUControl means that full module will be used here.
+// Step4
+
 `include "7.6.0.main_decoder.v"
 `include "7.6.1.alu_decoder.v"
 
@@ -18,7 +20,7 @@ module control_unit(zero, op, op5, funct3, funct7, PCSrc, RegWrite, ALUSrc, MemW
     output  [2:0] ALUControl;
 
     // intermediate wire for ALUOp from main_decoder
-    logic [1:0] ALUOp;
+    wire [1:0] ALUOp;
 
     // instantiate main_decoder
     main_decoder u_main_decoder (
@@ -30,7 +32,7 @@ module control_unit(zero, op, op5, funct3, funct7, PCSrc, RegWrite, ALUSrc, MemW
         .MemWrite(MemWrite),
         .ResultSrc(ResultSrc),
         .ImmSrc(ImmSrc),
-        .ALUOp(ALUOp)
+       .ALUOp(ALUOp)
     );
 
     // instantiate alu_decoder

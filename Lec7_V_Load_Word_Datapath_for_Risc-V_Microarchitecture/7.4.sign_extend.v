@@ -1,4 +1,4 @@
-// This module used for the Step3.png's Sign Extend.
+// Step3
 
 module Sign_Extend (In, ImmExt);
     

@@ -4,9 +4,10 @@
 `include "7.3.data_memory.v"
 `include "7.4.sign_extend.v"
 `include "7.5.alu.v"
-`include "7.6.2.control_unit_top.v"
 // `include "7.6.0.main_decoder.v" // no need to include it here as declared in control_unit_top. //
 // `include "7.6.1.alu_decoder.v"  // no need to include it here as declared in control_unit_top. //
+`include "7.6.2.control_unit_top.v"
+`include "7.7.PC_Adder.v"
 
 module Single_Cycle_Top (clk, rst); // clk for synchronize, rst for reset.
 
@@ -14,7 +15,7 @@ module Single_Cycle_Top (clk, rst); // clk for synchronize, rst for reset.
 
     // first P_C -> module name of "7.1.program_counter" file, second P_C -> object name(can be any name).
     P_C P_C(
-        .PC_Next(),
+        .PC_Next(PCPlus4),
         .PC(PC_A),
         .CLK(clk),  // CLK -> P_C module's variables, clk -> Single_Cycle_Top module's variable.
         .rst(rst)
@@ -29,6 +30,7 @@ module Single_Cycle_Top (clk, rst); // clk for synchronize, rst for reset.
                 .RD(RD_A1)
    );
 
+
     // Step 2 //
     wire [31:0] RD_A1;  // For connecting path between Instruction Memory's input & Register File's output. 32bit cz, Instruction Memory's input, RD -> 32bit.
 
@@ -36,7 +38,7 @@ module Single_Cycle_Top (clk, rst); // clk for synchronize, rst for reset.
                     .A1(RD_A1[19:15]), 
                     .A2(), 
                     .A3(RD_A1[11:7]), // From Step5. 
-                    .WD3(ReadData), 
+                    .WD3(ReadData),
                     .CLK(clk), 
                     .WE3(RegWrite),  // From Step5.
                     .RD1(RD1_A), 
@@ -44,15 +46,18 @@ module Single_Cycle_Top (clk, rst); // clk for synchronize, rst for reset.
                     .rst(rst)
     );
 
+
     // Step 3 //
-    sign_extend S_E(
+    Sign_Extend S_E(
                     .In(RD_A1),
                     .ImmExt(ImmExt_B)
     );
 
-    wire [31:0] RD1_A, ImmExt_B, ALUControl_Top;
 
     // Step 4 //
+    wire [31:0] RD1_A, ImmExt_B; 
+    wire [2:0] ALUControl_Top;
+
     alu ALU(
             .A(RD1_A),
             .B(ImmExt_B),
@@ -79,11 +84,12 @@ module Single_Cycle_Top (clk, rst); // clk for synchronize, rst for reset.
                     .ALUControl(ALUControl_Top)
     );
 
-    wire [31:0] ALUResult;
-    wire RegWrite;
-    wire ReadData;
 
     // Step 5 // N.B: In Step4 picture, there was no RegWrite port in Register File, but it's in Step5's picture. Also, A3 inside Register File should also be connected.
+    wire [31:0] ALUResult;
+    wire RegWrite;
+    wire [31:0] ReadData;
+
     Data_Memory D_M(
                     .A(ALUResult),
                     .WD(),
@@ -93,7 +99,14 @@ module Single_Cycle_Top (clk, rst); // clk for synchronize, rst for reset.
                     .RD(ReadData)
     );
 
- /////Step5 done/////////
 
+    // Step 6
+    wire [31:0] PCPlus4;
+
+    PC_Adder PC_Adder(
+                    .a(PC_A),
+                    .b(32'd4),
+                    .c(PCPlus4)
+    );
 
 endmodule

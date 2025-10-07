@@ -1,3 +1,5 @@
+// Step2
+
 module register_file(A1, A2, A3, WD3, CLK, WE3, RD1, RD2, rst);
 
     // suppose 'add x3, x1, x2', here, x1 -> A1, x2 -> A2, x3 -> A3.
