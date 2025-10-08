@@ -25,14 +25,18 @@ module register_file(A1, A2, A3, WD3, CLK, WE3, RD1, RD2, rst);
                 end
         end
 
+    // Newly added after running gtkwave for waveform. //
+    initial begin
+        Registers[9] = 32'h00000020; // 9 cz rs1 = 01001 which is 9. ? why 32'h00000020 ?
+    end
+    ////////////////////////////////////////////////////
+
+
 /////////////////////////////////////////////////////////////////
 /*
 Suppose register x5 currently contains 100.
-
 (i) If you set A3 = 5, WD3 = 200, WE3 = 1 → on the next clock edge, x5 becomes 200.
-
 (ii) If you set A3 = 5, WD3 = 200, WE3 = 0 → x5 stays at 100.
-
 Meanwhile, you can still read registers via A1 and A2.
 */
 /////////////////////////////////////////////////////////////////
