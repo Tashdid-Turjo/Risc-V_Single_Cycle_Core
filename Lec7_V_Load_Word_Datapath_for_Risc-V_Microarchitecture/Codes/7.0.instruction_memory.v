@@ -22,7 +22,7 @@ initial begin
     
     // For Store Word
     Mem[0] = 32'h0064A423; // Got this Address from the instruction under Machine Language's(You'll get it from every Store Word pic's lower part).
-
+    Mem[1] = 32'h00B62423; // Got this from venus.cs61c.org website's online riscv assembly simulator.
 end
 ////////////////////////////////////////////////////
 

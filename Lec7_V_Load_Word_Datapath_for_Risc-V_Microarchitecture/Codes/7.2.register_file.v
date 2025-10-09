@@ -27,7 +27,10 @@ module register_file(A1, A2, A3, WD3, CLK, WE3, RD1, RD2, rst);
 
     // Newly added after running gtkwave for waveform. //
     initial begin
-        Registers[9] = 32'h00000020; // 9 cz rs1 = 01001 which is 9. ? why 32'h00000020 ?
+        Registers[9] = 32'h00000020; // 9 cz rs1 = 01001 which is 9. ? But why 32'h00000020 ?
+        Registers[6] = 32'h00000040; // 6 cz rs2 = 00110 which is 6. ? But why 32'h00000040 ?        
+        Registers[11] = 32'h00000028;// See venus.cs61c.org picture's (11-14). ? But why 32'h00000028 ?
+        Registers[12] = 32'h00000030;// See venus.cs61c.org picture's (11-14). ? But why 32'h00000030 ?
     end
     ////////////////////////////////////////////////////
 

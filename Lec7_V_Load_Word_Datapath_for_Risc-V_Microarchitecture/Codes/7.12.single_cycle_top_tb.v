@@ -21,7 +21,7 @@ module Single_Cycle_Top_tb ();
 
     initial begin
         rst = 1'b0;
-        #100;
+        #200;
 
         rst = 1'b1;
         #300;
