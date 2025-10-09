@@ -5,14 +5,13 @@ module Sign_Extend (In, ImmExt, ImmSrc); // ImmSrc -> For Step7's S-Type Instruc
     input ImmSrc;
     output [31:0] ImmExt;
 
-    assign ImmExt = {ImmSrc == 1'b1} ? ({20{In[31]}}, {In[31:25], In[11:7]}) : // For S-Type(Store Word).
-                                       ({20{In[31]}}, {In[31:20]});            // For I-Type(Load Word).
+    assign ImmExt = (ImmSrc == 1'b1) ? { {20{In[31]}}, In[31:25], In[11:7] } : // For S-Type(Store Word).
+                                       { {20{In[31]}}, In[31:20] };            // For I-Type(Load Word).
 
 endmodule
 
 
 // // Step3 Only
-
 // module Sign_Extend (In, ImmExt);
     
 //     input [31:0] In; // There's nothing written in the pic, so gave a name In.

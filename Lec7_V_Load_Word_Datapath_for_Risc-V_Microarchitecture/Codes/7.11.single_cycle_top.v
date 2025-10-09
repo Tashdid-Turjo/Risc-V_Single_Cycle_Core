@@ -36,21 +36,26 @@ module Single_Cycle_Top (clk, rst); // clk for synchronize, rst for reset.
 
     register_file R_F(
                     .A1(RD_A1[19:15]), 
-                    .A2(), 
+                    .A2(RD_A1[24:20]), 
                     .A3(RD_A1[11:7]), // From Step5. 
                     .WD3(ReadData),
                     .CLK(clk), 
                     .WE3(RegWrite),  // From Step5.
                     .RD1(RD1_A), 
-                    .RD2(), 
+                    .RD2(RD2_WD), 
                     .rst(rst)
     );
 
+    // Step7 //
+    wire [31:0] RD2_WD;
+    wire MemWrite;
+    wire [1:0] ImmSrc;
 
     // Step 3 //
     Sign_Extend S_E(
                     .In(RD_A1),
-                    .ImmExt(ImmExt_B)
+                    .ImmExt(ImmExt_B),
+                    .ImmSrc(ImmSrc[0])
     );
 
 
@@ -78,9 +83,9 @@ module Single_Cycle_Top (clk, rst); // clk for synchronize, rst for reset.
                     .PCSrc(),
                     .RegWrite(RegWrite),
                     .ALUSrc(),
-                    .MemWrite(),
+                    .MemWrite(MemWrite),
                     .ResultSrc(),
-                    .ImmSrc(),
+                    .ImmSrc(ImmSrc),
                     .ALUControl(ALUControl_Top)
     );
 
@@ -92,9 +97,9 @@ module Single_Cycle_Top (clk, rst); // clk for synchronize, rst for reset.
 
     Data_Memory D_M(
                     .A(ALUResult),
-                    .WD(),
+                    .WD(RD2_WD),
                     .CLK(clk),
-                    .WE(),
+                    .WE(MemWrite),
                     .rst(rst),
                     .RD(ReadData)
     );
