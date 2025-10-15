@@ -36,11 +36,11 @@ module Single_Cycle_Top (clk, rst); // clk for synchronize, rst for reset.
     wire [31:0] RD_A1;  // For connecting path between Instruction Memory's input & Register File's output. 32bit cz, Instruction Memory's input, RD -> 32bit.
 
     register_file R_F(
-                    .A1(RD_A1[19:15]), 
+                    .A1(RD_A1[19:15]),
                     .A2(RD_A1[24:20]), 
                     .A3(RD_A1[11:7]), // From Step5. 
                     .WD3(c_WD3),      // From Step8(ii). That older 'ReadData' cut off bcz of Mux.
-                    .CLK(clk), 
+                    .CLK(clk),
                     .WE3(RegWrite),  // From Step5.
                     .RD1(RD1_A), 
                     .RD2(RD2_WD), 

@@ -15,8 +15,8 @@ assign RD = (rst == 1'b0) ? 32'h00000000 : Mem[A[31:2]]; // In general concept, 
 // Newly added after running gtkwave for waveform. //
 initial begin
     // Only one instruction should be run at a time. Ex- While Load Word, only Load Word's Mem[0], Mem[1] should be run.
-    // For Load Word
-    // Mem[0] = 32'hFFC4A303; // Got this Address from the instruction under Machine Language's(You'll get it from every Load Word pic's lower part).
+    // For Load
+    // Mem[0] = 32'WordhFFC4A303; // Got this Address from the instruction under Machine Language's(You'll get it from every Load Word pic's lower part).
     // Mem[1] = 32'h00832383; // Got this from venus.cs61c.org website's online riscv assembly simulator.
     
     // For Store Word

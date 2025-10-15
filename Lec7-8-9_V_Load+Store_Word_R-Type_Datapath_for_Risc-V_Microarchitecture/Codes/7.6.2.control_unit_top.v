@@ -32,7 +32,7 @@ module control_unit(zero, op, op5, funct3, funct7, PCSrc, RegWrite, ALUSrc, MemW
         .MemWrite(MemWrite),
         .ResultSrc(ResultSrc),
         .ImmSrc(ImmSrc),
-       .ALUOp(ALUOp)
+        .ALUOp(ALUOp)
     );
 
     // instantiate alu_decoder
