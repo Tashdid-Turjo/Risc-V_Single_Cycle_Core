@@ -1,4 +1,5 @@
 // Step4
+// consider it as Control Unit from this picture- "The_Red_Mark_Shown_have_been_implemented_here".
 
 module main_decoder(zero, op, PCSrc, RegWrite, ALUSrc, MemWrite, ResultSrc, ImmSrc, ALUOp);
     input   zero;
