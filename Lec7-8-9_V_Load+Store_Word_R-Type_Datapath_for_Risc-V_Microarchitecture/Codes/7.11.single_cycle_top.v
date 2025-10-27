@@ -111,7 +111,7 @@ module Single_Cycle_Top (clk, rst); // clk for synchronize, rst for reset.
 
     PC_Adder PC_Adder(
                     .a(PC_A),
-                    .b(32'd4),
+                    .b(32'd4),  // Just the constant 4 is connected with b.
                     .c(PCPlus4)
     );
 

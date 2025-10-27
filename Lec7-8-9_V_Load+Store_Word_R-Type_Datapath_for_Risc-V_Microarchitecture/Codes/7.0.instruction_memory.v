@@ -7,11 +7,11 @@ input [31:0] A;
 input rst;
 output [31:0] RD;
 
-// creation of memory
+// creation of Memory
 reg [31:0] Mem [1023:0];  // when multiple  registers are there then -> 'Mem [1023:0]' which means 1024 amounts of registers & each of its size -> 32 bits.
 
 assign RD = (rst == 1'b0) ? 32'h00000000 : Mem[A[31:2]]; // In general concept, rst high -> 32'h00000000, but throughout the video, he used rst low -> 32'h00000000.
-
+                                                         // ?? Here, why 31:2 is used. In the video, he just said to assume it as 8 bytes. ??
 // Newly added after running gtkwave for waveform. //
 initial begin
     // Only one instruction should be run at a time. Ex- While Load Word, only Load Word's Mem[0], Mem[1] should be run.
